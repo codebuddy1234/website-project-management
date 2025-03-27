@@ -1,0 +1,39 @@
+.bg-hero {
+    background-image: url('/assets/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-services {
+    background-image: url('/assets/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-portfolio {
+    background-image: url('/assets/bg3.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-testimonials {
+    background-image: url('/assets/bg4.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.bg-contact {
+    background-image: url('/assets/bg5.jpg');
+    background-size: cover;
+    background-position: center;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-out;
+}

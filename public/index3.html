@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/src/styles.css">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+    color: #ffffff; /* Ensure text is white for better visibility */
+}
+
+.hero-gif {
+    flex: 1;
+    max-width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-gif {
+        margin-top: 2rem;
+    }
+}
+/* Services Section Styles */
+#services .grid div {
+    transition: transform 0.3s ease-in-out;
+}
+
+#services .grid div:hover {
+    transform: scale(1.05);
+}
+
+#services .grid div ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+}
+#testimonials-container {
+    display: flex;
+    overflow-x: hidden; /* Hide scrollbar */
+    gap: 20px; /* Adjust gap as needed */
+    scroll-behavior: smooth; /* Optional: for smooth scrolling */
+}
+
+#testimonials-container > div {
+    flex-shrink: 0;
+    width: 320px; /* Adjust width as needed */
+}
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <!-- <!-- Navbar -->
+<nav class="bg-white dark:bg-gray-800 shadow-md">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <a href="#" class="flex-shrink-0 flex items-center">
+                    <img class="h-8 w-8" src="/assets/Coding.gif" alt="Workflow">
+                    <span class="ml-2 text-xl font-bold text-gray-800 dark:text-gray-200">Engineering Projects</span>
+                </a>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <a href="#services" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    Services
+                </a>
+                <a href="#portfolio" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    Portfolio
+                </a>
+                <a href="#testimonials" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    Testimonials
+                </a>
+                <a href="#contact" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    Contact
+                </a>
+                <a href="#login" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    Login
+                </a>
+                <button id="dark-mode-toggle" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div x-data="{ open: false }" class="sm:hidden">
+        <div x-show="open" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#services" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+            <a href="#portfolio" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+            <a href="#testimonials" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+            <a href="#contact" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            <a href="#login" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Login</a>
+            <button id="dark-mode-toggle-mobile" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block w-full px-3 py-2 rounded-md text-base font-medium">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Hero Section -->
+<section id="hero" class="bg-gray-900 text-white py-20 fade-in-up">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="text-5xl font-extrabold tracking-tight sm:text-6xl">Your Engineering Projects Partner</h2>
+                <p class="mt-4 text-xl">We turn your ideas into reality with professional web development, app development, AI models, and more.</p>
+                <div class="mt-6 flex justify-center">
+                    <a href="#contact" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-gray-200 transform transition-transform duration-500 ease-in-out hover:scale-110">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="hero-gif">
+                <img src="/assets/Coding.gif" alt="Coding GIF">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="bg-gray-100 dark:bg-gray-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-200">Our Services</h2>
+            <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">We offer a wide range of engineering project services</p>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-3 lg:max-w-none">
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-100 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/bg2.jpg');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">Web Development</h3>
+                        <p class="mt-3 text-base">Build robust and responsive web applications using the latest technologies.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Technologies Used:</h4>
+                        <ul class="list-disc ml-6">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Vue.js</li>
+                            <li>Angular</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-100 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/bg1.jpg');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">App Development</h3>
+                        <p class="mt-3 text-base">Create innovative mobile applications for iOS and Android platforms.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Technologies Used:</h4>
+                        <ul class="list-disc ml-6">
+                            <li>Swift</li>
+                            <li>Kotlin</li>
+                            <li>React Native</li>
+                            <li>Flutter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-100 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/bg2.jpg');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">AI Models</h3>
+                        <p class="mt-3 text-base">Develop advanced AI and machine learning models to solve complex problems.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Technologies Used:</h4>
+                        <ul class="list-disc ml-6">
+                            <li>Python</li>
+                            <li>TensorFlow</li>
+                            <li>PyTorch</li>
+                            <li>Keras</li>
+                            <li>Scikit-learn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Portfolio Section -->
+<section id="portfolio" class="bg-gray-100 dark:bg-gray-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-200">Our Portfolio</h2>
+            <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">Check out some of our completed projects</p>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-3 lg:max-w-none">
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/400');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">Project 1</h3>
+                        <p class="mt-3 text-base">Brief description of the project.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Details:</h4>
+                        <p class="mt-2 text-base">This project involved developing a responsive web application using modern technologies. The client was satisfied with the outcome.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/400');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">Project 2</h3>
+                        <p class="mt-3 text-base">Brief description of the project.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Details:</h4>
+                        <p class="mt-2 text-base">This project focused on creating a mobile application for both iOS and Android platforms. The app was well-received by users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 transition-transform duration-300 hover:scale-105 group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/400');"></div>
+                <div class="relative flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">Project 3</h3>
+                        <p class="mt-3 text-base">Brief description of the project.</p>
+                    </div>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Details:</h4>
+                        <p class="mt-2 text-base">This project involved developing advanced AI models to solve complex problems. The models were highly accurate and efficient.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Us Section -->
+<section id="about" class="bg-gray-100 dark:bg-gray-900 py-16 fade-in-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-gray-900 dark:text-gray-200">About Us</h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                We are a team of experienced developers, engineers, and designers committed to helping students and professionals 
+                with high-quality, industry-standard final-year projects.
+            </p>
+        </div>
+
+        <!-- Team Introduction -->
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <img src="team-member-1.jpg" alt="Team Member 1" class="w-32 h-32 mx-auto rounded-full">
+                <h3 class="mt-4 text-xl font-semibold text-gray-900 dark:text-gray-200">Lokesh Sharma</h3>
+                <p class="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Expert in web and app development, ensuring smooth project execution.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <img src="team-member-2.jpg" alt="Team Member 2" class="w-32 h-32 mx-auto rounded-full">
+                <h3 class="mt-4 text-xl font-semibold text-gray-900 dark:text-gray-200">Ananya Verma</h3>
+                <p class="text-gray-600 dark:text-gray-400">AI & ML Specialist</p>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Building intelligent solutions with cutting-edge AI & machine learning.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <img src="team-member-3.jpg" alt="Team Member 3" class="w-32 h-32 mx-auto rounded-full">
+                <h3 class="mt-4 text-xl font-semibold text-gray-900 dark:text-gray-200">Rahul Mehta</h3>
+                <p class="text-gray-600 dark:text-gray-400">Embedded Systems & IoT</p>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Creating innovative IoT and embedded systems for various applications.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <img src="team-member-4.jpg" alt="Team Member 4" class="w-32 h-32 mx-auto rounded-full">
+                <h3 class="mt-4 text-xl font-semibold text-gray-900 dark:text-gray-200">Priya Kapoor</h3>
+                <p class="text-gray-600 dark:text-gray-400">UI/UX Designer</p>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Ensuring seamless user experience with intuitive and modern designs.</p>
+            </div>
+        </div>
+
+        <!-- Our Work -->
+        <div class="mt-16 text-center">
+            <h3 class="text-3xl font-semibold text-gray-900 dark:text-gray-200">What We Do</h3>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                Our team specializes in delivering high-quality final-year projects tailored for engineering and diploma students.
+            </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-200">Web & App Development</h4>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Professional websites and mobile apps tailored to your project needs.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-200">AI & Machine Learning</h4>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Advanced AI models for smart automation and intelligent decision-making.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg text-center transform hover:scale-105 transition">
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-200">IoT & Embedded Systems</h4>
+                <p class="mt-2 text-gray-500 dark:text-gray-300">Connected solutions with real-world hardware integration.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-gray-100 dark:bg-gray-900 py-16 fade-in-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-200">Testimonials</h2>
+            <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">What our clients say about us</p>
+        </div>
+        <div id="testimonials-container" class="mt-12 flex overflow-x-auto gap-5">
+            <!-- Initial Testimonials -->
+            <div class="flex-shrink-0 w-80 flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 fade-in-up">
+                <div class="flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <p class="text-xl font-semibold">"Great experience working with this team. Highly recommended!"</p>
+                        <p class="mt-3 text-base">- John Doe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-shrink-0 w-80 flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 fade-in-up">
+                <div class="flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <p class="text-xl font-semibold">"Excellent work and timely delivery. Will definitely work with them again."</p>
+                        <p class="mt-3 text-base">- Jane Smith</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-shrink-0 w-80 flex flex-col rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 fade-in-up">
+                <div class="flex-1 p-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <p class="text-xl font-semibold">"Very professional and knowledgeable. The project exceeded my expectations."</p>
+                        <p class="mt-3 text-base">- Mike Johnson</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <!-- Contact Section -->
+<section id="contact" class="bg-gray-100 dark:bg-gray-900 py-16 fade-in-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-200">Contact Us</h2>
+            <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">Get in touch with us for your project needs</p>
+        </div>
+        <div class="mt-12">
+            <form id="contactForm" class="max-w-lg mx-auto space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
+                    <input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+                    <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                </div>
+                <div>
+                    <label for="budget" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Project Budget</label>
+                    <input type="text" id="budget" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                </div>
+                <div>
+                    <label for="requirements" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Project Requirements</label>
+                    <textarea id="requirements" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required></textarea>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Message</label>
+                    <textarea id="message" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            <div id="submissionMessage" class="mt-4 text-center text-green-500 hidden">
+                <p>Thank you! Your form has been successfully submitted.</p>
+                <p>Sign in to track your order or visit more of our site.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+    const submissionMessage = document.getElementById('submissionMessage');
+
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Here you would typically handle form submission, e.g., send data to a server
+        // For this example, we'll just show the submission message
+        contactForm.classList.add('hidden');
+        submissionMessage.classList.remove('hidden');
+    });
+});
+</script>
+ <!-- FAQ Section -->
+ <section id="faq" class="py-16 px-6 bg-gray-100 text-center">
+    <h3 class="text-3xl font-bold text-gray-800">Frequently Asked Questions</h3>
+    <div class="mt-8 text-left max-w-2xl mx-auto">
+        <details class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <summary class="font-semibold cursor-pointer">How long does it take to complete a project?</summary>
+            <p class="mt-2 text-gray-600">It depends on the complexity. Usually, 1-4 weeks.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <summary class="font-semibold cursor-pointer">Do you provide project documentation?</summary>
+            <p class="mt-2 text-gray-600">Yes, detailed documentation is included with each project.</p>
+        </details>
+    </div>
+</section>
+
+  <!-- Footer -->
+<footer class="bg-gray-800 text-gray-400">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+            <!-- About Us -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-medium text-gray-200">About Us</h3>
+                <p class="text-sm">We are a team of passionate engineers dedicated to delivering high-quality projects. Our mission is to leverage technology to solve real-world problems.</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="mt-8 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                <div class="md:grid md:grid-cols-2 md:gap-8">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-200">Company</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="hover:text-gray-300">About</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Careers</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Branding</a></li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 md:mt-0">
+                        <h3 class="text-lg font-medium text-gray-200">Resources</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="hover:text-gray-300">Blog</a></li>
+                            <li><a href="#" class="hover:text-gray-300">News</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:grid md:grid-cols-2 md:gap-8">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-200">Support</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="hover:text-gray-300">FAQ</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Contact Us</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Help Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 md:mt-0">
+                        <h3 class="text-lg font-medium text-gray-200">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="mt-8 flex justify-center space-x-6">
+            <a href="#" class="text-gray-400 hover:text-gray-300">
+                <span class="sr-only">Facebook</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24H12.82v-9.21H9.692v-3.69H6.74v3.69h-2.51V9.948h2.596v-3.07h.056c.47-.002 1.087-.094 1.087-1.184v-1.91h2.03L15.09 3.16h1.26L19.1 1.54h-2.03v2.61h-1.26c-.09.58-.48 1.25-.48 1.25h2.49c0 1.09-.6 1.65-1.18 1.65h-.05v3.07h2.51L22.676 24H24V1.324C24 .593 23.407 0 22.676 0z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-300">
+                <span class="sr-only">Twitter</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.14-.01-.34-.016-.485A8.348 8.348 0 0022 5.92a8.5 8.5 0 01-2.3 5.755 4.49 4.49 0 002.2-3.867v.055a4.49 4.49 0 01-3.584 4.3L14.5 3.516A4.49 4.49 0 0110.89 8.308a4.49 4.49 0 01-4.3-3.584v.055a4.49 4.49 0 003.867 2.2A4.49 4.49 0 018.29 1.5a8.48 8.48 0 00-5.9 2.292 8.348 8.348 0 00-.015 11.675c0 5.422 4.233 9.675 9.675 9.675z"></path>
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-300">
+                <span class="sr-only">Instagram</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12 2.163c3.204 0 3.585.012 4.85.07 1.17.052 1.998.302 2.473.499.499.209.701.663.701 1.236s-.202 1.028-.499 1.236c-.475.197-1.201.449-2.473.499a5.99 5.99 0 00-4.85.07c-3.204 0-3.585-.012-4.85-.07-1.17-.052-1.998-.302-2.473-.499-.499-.209-.701-.663-.701-1.236s.202-1.028.499-1.236c.475-.197 1.201-.449 2.473-.499C8.415 2.175 8.796 2.163 12 2.163zm-1.26.922a4.002 4.002 0 013.536 1.866 4.002 4.002 0 011.866 3.536 4.002 4.002 0 01-1.866 3.536 4.002 4.002 0 01-3.536 1.866 4.002 4.002 0 01-3.536-1.866 4.002 4.002 0 01-1.866-3.536 4.002 4.002 0 011.866-3.536 4.002 4.002 0 013.536-1.866zm5.657 16.022a7.984 7.984 0 01-2.358-.649 4.002 4.002 0 01-3.536-1.866 4.002 4.002 0 011.865-3.536 4.002 4.002 0 013.537 1.865c.983.579 1.664 1.477 1.664 2.466 0 1.223-.843 2.212-2.21 2.212-.565 0-1.213-.045-1.955-.138z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 border-t border-gray-700 pt-8">
+            <p class="text-center text-sm">&copy; 2023 Engineering Projects. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="/src/script.js"></script>
+</body>
+</html>
