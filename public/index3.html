@@ -112,8 +112,8 @@
                 <a href="#login" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                     Login
                 </a>
-                <button id="dark-mode-toggle" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                    <i class="fas fa-moon"></i>
+                <button   id="dark-mode-toggle" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    <i  class="fas fa-moon"></i>
                 </button>
             </div>
             <div class="-mr-2 flex items-center sm:hidden">
@@ -134,6 +134,7 @@
             <a href="#login" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Login</a>
             <button id="dark-mode-toggle-mobile" class="text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 block w-full px-3 py-2 rounded-md text-base font-medium">
                 <i class="fas fa-moon"></i>
+                 
             </button>
         </div>
     </div>
@@ -154,7 +155,7 @@
                 </div>
             </div>
             <div class="hero-gif">
-                <img src="/assets/Coding.gif" alt="Coding GIF">
+                <img src="/website-project-management/assets/Coding.gif" alt="Coding GIF">
             </div>
         </div>
     </div>
@@ -441,6 +442,23 @@ document.addEventListener('DOMContentLoaded', function () {
         submissionMessage.classList.remove('hidden');
     });
 });
+
+
+const addto =(event)=>
+ {
+    event.preventDefault();
+    if(document.body.style.backgroundColor=="white" )
+    {
+      document.body.style.backgroundColor="black"
+
+    }
+    else{
+        document.body.style.backgroundColor="white"
+
+    } }
+let modechange = document.getElementById("dark-mode-toggle-mobile");
+modechange.addEventListener('click',addto);
+
 </script>
  <!-- FAQ Section -->
  <section id="faq" class="py-16 px-6 bg-gray-100 text-center">
